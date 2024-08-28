@@ -3,11 +3,17 @@ package com.example.demo.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "tb_atividade")
 public class Atividade {
 
     @Id
@@ -19,6 +25,10 @@ public class Atividade {
 
     @ManyToMany(mappedBy = "atividades")
     private List<Participant> participants = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_atividade")
+    private Categoria categoria;
 
     public Long getId() {
         return id;
@@ -55,7 +65,5 @@ public class Atividade {
     public List<Participant> getParticipants() {
         return participants;
     }
-
-    
 
 }
