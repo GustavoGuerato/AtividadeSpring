@@ -1,8 +1,12 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 public class Atividade {
 
@@ -12,6 +16,9 @@ public class Atividade {
     private String nome;
     private String descricao;
     private Double preco;
+
+    @ManyToMany(mappedBy = "atividades")
+    private List<Participant> participants = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -44,5 +51,11 @@ public class Atividade {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+
+    
 
 }
