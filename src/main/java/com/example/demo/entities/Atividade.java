@@ -30,6 +30,10 @@ public class Atividade {
     @JoinColumn(name = "categoria_atividade")
     private Categoria categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "bloco_atividade")
+    private Bloco block;
+
     public Long getId() {
         return id;
     }
